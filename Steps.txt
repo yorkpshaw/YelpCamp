@@ -1,0 +1,10 @@
+Back-End Initialization:
+    npm init -y
+    npm i express mongoose ejs
+    app.js/index.js in root server directory
+    app.listen & app.get to test communicatoin
+    nodemon app.js to start the server
+    set up path and connection to views folder
+
+    create models folder for database schemas
+    command to enter Mongo shell is 'Mongosh'
