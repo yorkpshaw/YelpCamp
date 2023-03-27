@@ -41,7 +41,7 @@ const seedDB = async () => {
                 location: `${cities[random1000].city}, ${cities[random1000].state}`,
                 title: `${sample(descriptors)} ${sample(places)}`
             });
-            console.log(camp); // log the camp object being saved
+            // console.log(camp); // log the camp object being saved
             await camp.save();
         }
     } catch (err) {
