@@ -8,3 +8,5 @@ Back-End Initialization:
 
     create models folder for database schemas
     command to enter Mongo shell is 'Mongosh'
+
+    get the models to populate in a list

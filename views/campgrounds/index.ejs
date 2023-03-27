@@ -9,9 +9,10 @@
 <body>
     <h1>All Campgrounds</h1>
     <ul>
+        <!-- app.get in app.js -->
         <% for (let campground of campgrounds) {%>
-        <li><%= campground.title %></li>
-        <% }%>
+            <li><a href="/campgrounds/<%= campground._id %>"><%= campground.title %></a></li>
+            <% }%>
     </ul>
 </body>
 </html>

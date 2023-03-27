@@ -26,8 +26,14 @@ app.get('/', (req, res) => {
 })
 
 app.get('/campgrounds', async (req, res) => {
+    // Get the campground data, what you do with it is in the ejs file
     const campgrounds = await Campground.find({});
     res.render('campgrounds/index', { campgrounds })
+})
+
+app.get('/campgrounds/:id', async (req, res) => {
+    const campground = await Campground.findById(req.params.id) // Node.js object that allows you to access the value of a URL parameter
+    res.render('campgrounds/show', { campground })
 })
 
 app.listen(3000, () => {
