@@ -10,3 +10,5 @@ Back-End Initialization:
     command to enter Mongo shell is 'Mongosh'
 
     get the models to populate in a list
+
+    npm i method-override
