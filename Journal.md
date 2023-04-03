@@ -6,3 +6,7 @@
 
 # 3-31-23
 ## Added Campground CRUD, installed npm i method-override
+
+# 4-3-23
+## Defining Middleware
+## Installed EJS

@@ -12,3 +12,7 @@ Back-End Initialization:
     get the models to populate in a list
 
     npm i method-override
+
+    app.use will override everything
+
+    npm i ejs-mate
