@@ -10,3 +10,4 @@
 # 4-3-23
 ## Defining Middleware
 ## Installed EJS
+## Added Navbar, Footer, Bootstrap
