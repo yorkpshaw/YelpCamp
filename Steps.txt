@@ -1,8 +1,26 @@
+1. Install dependencies and packages
+    -Database, backend server, middleware, frontend
+2. Get server connected to database
+    -Middleware
+    -Seed database?
+3. Set up routes between backend and database
+    -Create models
+    -CRUD Functionality
+    -Index page
+4. Basic layout
+    -Boilerplate
+    -Bootstrap/Tailwind/Etc.
+    -Navbar
+    -Footer
+5. Error handling
+6. Authentication and Authorization
+
+
 Back-End Initialization:
     npm init -y
     npm i express mongoose ejs
     app.js/index.js in root server directory
-    app.listen & app.get to test communicatoin
+    app.listen & app.get to test communication
     nodemon app.js to start the server
     set up path and connection to views folder
 

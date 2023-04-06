@@ -11,3 +11,7 @@
 ## Defining Middleware
 ## Installed EJS
 ## Added Navbar, Footer, Bootstrap
+## Implemented CRUD functionality
+
+# 4-4-23
+##
