@@ -13,5 +13,5 @@
 ## Added Navbar, Footer, Bootstrap
 ## Implemented CRUD functionality
 
-# 4-4-23
-##
+# 4-8-23
+## Added error handlers in js files, created utils folder for universal error handler
