@@ -16,6 +16,8 @@
     -utils folder for custom error handling, keeps app file cleaner
     -'require' in the js files
     -Express error classes
+    -Validate data with JOI
+    -middleware validation
 6. Authentication and Authorization
 
 
@@ -37,3 +39,5 @@ Back-End Initialization:
     app.use will override everything
 
     npm i ejs-mate
+
+    npm i joi
