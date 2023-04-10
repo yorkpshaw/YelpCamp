@@ -13,8 +13,9 @@
     -Navbar
     -Footer
 5. Error handling
-    -utils folder for universal error handling, keeps app file cleaner
+    -utils folder for custom error handling, keeps app file cleaner
     -'require' in the js files
+    -Express error classes
 6. Authentication and Authorization
 
 
