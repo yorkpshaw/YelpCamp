@@ -14,11 +14,17 @@
     -Footer
 5. Error handling
     -utils folder for custom error handling, keeps app file cleaner
+        -expressError creates custom error objects with an associated status code
+        -catchAsync so we don't have to keep writing try/catch
     -'require' in the js files
     -Express error classes
+    -
+6. JOI
     -Validate data with JOI
     -middleware validation
-6. Authentication and Authorization
+    -NOT Mongoose Schema
+    -Use this to validate incoming requests
+    -Validate ---> Call next ---> (if error, display error template) ---> if no error, post
 
 
 Back-End Initialization:
