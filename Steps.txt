@@ -6,7 +6,9 @@
 3. Set up routes between backend and database
     -Create models
     -CRUD Functionality
+    -show a specific item should be placed near the end, otherwise certain things may never get seen
     -Index page
+    -method override
 4. Basic layout
     -Boilerplate
     -Bootstrap/Tailwind/Etc.
@@ -25,7 +27,10 @@
     -NOT Mongoose Schema
     -Use this to validate incoming requests
     -Validate ---> Call next ---> (if error, display error template) ---> if no error, post
-
+7. MongoDB
+    -Mongoose middleware can help delete an item and all things associated with it
+    -pre/post middleware. pre runs before the query. post middleware has access to data being queried
+    -${in} deletes all products associated with something else under findoneanddelete
 
 Back-End Initialization:
     npm init -y

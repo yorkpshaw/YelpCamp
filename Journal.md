@@ -15,3 +15,9 @@
 
 # 4-8-23
 ## Added error handlers in js files, created utils folder for universal error handler
+
+# 4-9/10-23
+## Stack trace + schema validation
+
+# 4-14-23
+## Worked on Review models/forms
