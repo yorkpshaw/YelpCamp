@@ -112,6 +112,15 @@ app.delete('/campgrounds/:id', catchAsync(async (req, res) => {
     res.redirect('/campgrounds');
 }));
 
+/* Remove the reference to the review in the campground and the review itself */
+app.delete('/campgrounds/:id/reviews/:reviewId', catchAsync(async (req, res) => {
+    const { id, reviewId } = req.params;
+    await Campground.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
+    await Review.findByIdAndDelete(reviewId);
+    res.redirect(`/campgrounds/${id}`);
+}))
+
+
 /* This must go at bottom in order to let everything else run first */
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found', 404));
