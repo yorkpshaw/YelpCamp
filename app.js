@@ -80,7 +80,8 @@ app.post('/campgrounds', validateCampground, catchAsync(async (req, res, next) =
 
 app.get('/campgrounds/:id', catchAsync(async (req, res) => {
     // Node.js object that allows you to access the value of a URL parameter
-    const campground = await Campground.findById(req.params.id).populate('reviews');
+    // const campground = await Campground.findById(req.params.id).populate({ path: 'reviews', options: { strictPopulate: false } });
+    const campground = await Campground.findById(req.params.id)
     res.render('campgrounds/show', { campground });
 }));
 
