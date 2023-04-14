@@ -31,6 +31,8 @@
     -Mongoose middleware can help delete an item and all things associated with it
     -pre/post middleware. pre runs before the query. post middleware has access to data being queried
     -${in} deletes all products associated with something else under findoneanddelete
+    -Do not forgot to update the models when updating schema!
+
 
 Back-End Initialization:
     npm init -y
