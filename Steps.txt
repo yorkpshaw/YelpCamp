@@ -1,7 +1,7 @@
 1. Install dependencies and packages
     -Database, backend server, middleware, frontend
 2. Get server connected to database
-    -Middleware
+    -Middleware, always call next?
     -Seed database?
 3. Set up routes between backend and database
     -Create models
@@ -47,6 +47,7 @@
     -pass in a secret?
 11. Flash
     -used to display a message, clear, and redirect
+    -install sessions first, tell app to use, create the middleware
 12. Public images directory
     -Must tell express to serve the public directory
     -app.use(express.static('public'));
