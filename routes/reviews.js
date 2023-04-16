@@ -1,5 +1,6 @@
 const express = require('express');
-const router = express.Router();
+/* mergeParams will merge all params between app/review */
+const router = express.Router({ mergeParams: true });
 const catchAsync = require('../utils/catchAsync');
 const ExpressError = require('../utils/expressError');
 const Campground = require('../models/campground');
