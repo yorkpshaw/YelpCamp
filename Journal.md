@@ -24,3 +24,6 @@
 
 # 4-15-23
 ## Express Routing + Cookies
+
+# 4-16-23
+## Completed express routing + authentication

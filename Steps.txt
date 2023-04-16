@@ -37,6 +37,7 @@
 8. Express Routers
     -Routing done in a separate file to help condense code
     -helps with scalability if app file gets too large
+    -mergeParams needs to be used inside routers sometimes, merge child and parent routes
 9. Cookies
     -For express, must install the cookie-parser
     -cookie-parsing allows devs to access and manipulate cookies
@@ -46,6 +47,9 @@
     -pass in a secret?
 11. Flash
     -used to display a message, clear, and redirect
+12. Public images directory
+    -Must tell express to serve the public directory
+    -app.use(express.static('public'));
 
 Back-End Initialization:
     npm init -y
