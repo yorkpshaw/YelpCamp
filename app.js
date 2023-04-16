@@ -1,17 +1,14 @@
 const express = require('express');
 const path = require('path');
-const Campground = require('./models/campground');
 const ejsMate = require('ejs-mate');
-const { campgroundSchema } = require('./schemas.js');
-const { reviewSchema } = require('./schemas.js');
-const catchAsync = require('./utils/catchAsync');
 const ExpressError = require('./utils/expressError');
 const Joi = require('joi');
 const methodOverride = require('method-override');
-const Review = require('./models/review');
 const mongoose = require('mongoose');
 
 const campgrounds = require('./routes/campgrounds');
+const reviews = require('./routes/reviews');
+
 
 mongoose.connect('mongodb://localhost:27017/yelp-camp', {
     useNewUrlParser: true,
@@ -36,42 +33,13 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'));
 
-
-/* Middleware for review */
-const validateReview = (req, res, next) => {
-    const { error } = reviewSchema.validate(req.body);
-    if (error) {
-        const msg = error.details.map(el => el.message).join(',')
-        throw new ExpressError(msg, 400)
-    } else {
-        next();
-    }
-}
-
+/* import the routes from the other folder, second argument is variable declared up top */
 app.use('/campgrounds', campgrounds)
+app.use('/campgrounds/:id/reviews', reviews)
 
 app.get('/', (req, res) => {
     res.render('home')
-})
-
-/* Find a specific campground to leave a review for */
-app.post('/campgrounds/:id/reviews', validateReview, catchAsync(async (req, res) => {
-    const campground = await Campground.findById(req.params.id);
-    const review = new Review(req.body.review);
-    campground.reviews.push(review);
-    await review.save();
-    await campground.save();
-    res.redirect(`/campgrounds/${campground._id}`);
-}))
-
-/* $pull will remove the reference to the review in the campground and the review itself */
-app.delete('/campgrounds/:id/reviews/:reviewId', catchAsync(async (req, res) => {
-    const { id, reviewId } = req.params;
-    await Campground.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
-    await Review.findByIdAndDelete(reviewId);
-    res.redirect(`/campgrounds/${id}`);
-}))
-
+});
 
 /* This must go at bottom in order to let everything else run first */
 app.all('*', (req, res, next) => {
@@ -82,8 +50,8 @@ app.use((err, req, res, next) => {
     const { statusCode = 500 } = err;
     if (!err.message) err.message = 'Uh oh something went wrong';
     res.status(statusCode).render('error', { err });
-})
+});
 
 app.listen(3000, () => {
     console.log('Serving on port 3000')
-})
+});
