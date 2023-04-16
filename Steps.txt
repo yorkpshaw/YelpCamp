@@ -51,6 +51,9 @@
 12. Public images directory
     -Must tell express to serve the public directory
     -app.use(express.static('public'));
+13. Authentication
+
+14. Authorization
 
 Back-End Initialization:
     npm init -y
