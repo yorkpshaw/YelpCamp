@@ -9,8 +9,8 @@ const ExpressError = require('./utils/expressError');
 const Joi = require('joi');
 const methodOverride = require('method-override');
 const Review = require('./models/review');
-
 const mongoose = require('mongoose');
+
 mongoose.connect('mongodb://localhost:27017/yelp-camp', {
     useNewUrlParser: true,
     // useCreateIndex: true, <--- Causes app to crash now
@@ -112,7 +112,7 @@ app.delete('/campgrounds/:id', catchAsync(async (req, res) => {
     res.redirect('/campgrounds');
 }));
 
-/* Remove the reference to the review in the campground and the review itself */
+/* $pull will remove the reference to the review in the campground and the review itself */
 app.delete('/campgrounds/:id/reviews/:reviewId', catchAsync(async (req, res) => {
     const { id, reviewId } = req.params;
     await Campground.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });

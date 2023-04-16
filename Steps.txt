@@ -32,7 +32,20 @@
     -pre/post middleware. pre runs before the query. post middleware has access to data being queried
     -${in} deletes all products associated with something else under findoneanddelete
     -Do not forgot to update the models when updating schema!
-
+    -use middleware to ensure you delete all things associated with each other (reviews:campgrounds)
+    -post is used to attach a middleware function to the schema that runs after a specific query is executed.
+8. Express Routers
+    -Routing done in a separate file to help condense code
+    -helps with scalability if app file gets too large
+9. Cookies
+    -For express, must install the cookie-parser
+    -cookie-parsing allows devs to access and manipulate cookies
+10. Sessions
+    -Server side data store used to make HTTP stateful
+    -Store data on the server-side and then send the browser a cookie to retrieve data
+    -pass in a secret?
+11. Flash
+    -used to display a message, clear, and redirect
 
 Back-End Initialization:
     npm init -y
@@ -54,3 +67,9 @@ Back-End Initialization:
     npm i ejs-mate
 
     npm i joi
+
+    npm i cookie-parser
+
+    npm i express-session
+
+    npm i connect-flash
