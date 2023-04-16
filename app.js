@@ -5,6 +5,7 @@ const ExpressError = require('./utils/expressError');
 const Joi = require('joi');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
+const session = require('express-session');
 
 const campgrounds = require('./routes/campgrounds');
 const reviews = require('./routes/reviews');
@@ -14,7 +15,7 @@ mongoose.connect('mongodb://localhost:27017/yelp-camp', {
     useNewUrlParser: true,
     // useCreateIndex: true, <--- Causes app to crash now
     useUnifiedTopology: true,
-    // useFindAndModify: false <--- Also crashes?
+    // useFindAndModify: false <--- Also crashes
 });
 
 const db = mongoose.connection;
@@ -29,6 +30,19 @@ const app = express();
 app.engine('ejs', ejsMate)
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'))
+
+const sessionConfig = {
+    secret: 'First Secret',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        /* Security measures */
+        httpOnly: true,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7
+    }
+}
+app.use(session(sessionConfig))
 
 /* parser */
 app.use(express.urlencoded({ extended: true }))
