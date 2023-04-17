@@ -11,7 +11,7 @@ const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 const Joi = require('joi');
 
-const userRoutes = require('./routes/user');
+const userRoutes = require('./routes/users');
 const campgroundRoutes = require('./routes/campgrounds');
 const reviewRoutes = require('./routes/reviews');
 
