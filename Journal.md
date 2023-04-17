@@ -27,3 +27,6 @@
 
 # 4-16-23
 ## Completed express routing + authentication
+
+# 4-17-23
+## Added authentication and authorization
