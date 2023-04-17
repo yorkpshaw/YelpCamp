@@ -60,6 +60,7 @@ app.use(passport.session());
 /* Asking passport to use LocalStrategy */
 passport.use(new LocalStrategy(User.authenticate()));
 
+/* Use a session and store information */
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
