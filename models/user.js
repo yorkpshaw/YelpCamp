@@ -3,7 +3,7 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const Schema = mongoose.Schema;
 
 
-const userSchema = new Schema({
+const UserSchema = new Schema({
     email: {
         type: String,
         required: true,
@@ -11,6 +11,6 @@ const userSchema = new Schema({
     }
 });
 /* Add onto schema a username, field for password, and make sure usernames are unique and not duplicated */
-userSchema.plugin(passportLocalMongoose);
+UserSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model('User', UserSchema);
