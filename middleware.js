@@ -1,6 +1,7 @@
 const { campgroundSchema, reviewSchema } = require('./schemas.js');
 const ExpressError = require('./utils/expressError');
 const Campground = require('./models/campground');
+const Review = require('./models/review');
 
 
 module.exports.isLoggedIn = (req, res, next) => {
@@ -43,7 +44,6 @@ module.exports.isReviewAuthor = async (req, res, next) => {
     }
     next();
 }
-
 
 module.exports.validateReview = (req, res, next) => {
     const { error } = reviewSchema.validate(req.body);

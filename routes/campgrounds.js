@@ -5,7 +5,6 @@ const Campground = require('../models/campground');
 const { isLoggedIn, isAuthor, validateCampground } = require('../middleware');
 
 
-
 router.get('/', catchAsync(async (req, res) => {
     // Get the campground data, what you do with it is in the ejs file
     const campgrounds = await Campground.find({});
@@ -14,10 +13,6 @@ router.get('/', catchAsync(async (req, res) => {
 
 /* Place this before show, or it gets mistake as :id */
 router.get('/new', isLoggedIn, (req, res) => {
-    if (!req.isAuthenticated()) {
-        req.flash('error', 'you must be signed in');
-        res.redirect('/login');
-    }
     res.render('campgrounds/new');
 });
 
@@ -32,11 +27,15 @@ router.post('/', isLoggedIn, validateCampground, catchAsync(async (req, res, nex
     res.redirect(`/campgrounds/${campground._id}`);
 }));
 
-router.get('/:id', catchAsync(async (req, res) => {
+router.get('/:id', catchAsync(async (req, res,) => {
     // Node.js object that allows you to access the value of a URL parameter
-    // const campground = await Campground.findById(req.params.id).populate({ path: 'reviews', options: { strictPopulate: false } });
-    const campground = await Campground.findById(req.params.id).populate('reviews').populate('author');
-    console.log(campground)
+    const campground = await Campground.findById(req.params.id).populate({
+        path: 'reviews',
+        populate: {
+            path: 'author'
+        }
+    }).populate('author');
+    console.log(campground);
     if (!campground) {
         req.flash('error', 'Cannot find that campground!');
         return res.redirect('/campgrounds');
