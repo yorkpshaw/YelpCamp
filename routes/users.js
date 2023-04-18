@@ -13,6 +13,7 @@ router.post('/register', catchAsync (async (req, res) => {
     const { email, username, password } = req.body;
     const user = new User({ email, username });
     const registeredUser = await User.register(user, password);
+    /* Sign in user after registration */
     req.login(registeredUser, err => {
         if(err) return next(err);
         req.flash('success', 'Welcome to YelpCamp!');
@@ -30,7 +31,9 @@ router.get('/login', (req, res) => {
 
 router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
     req.flash('success', 'Welcome back!');
-    res.redirect('campgrounds');
+    const redirectUrl = req.session.returnTo || '/campgrounds';
+    delete.
+    res.redirect(redirectUrl);
 });
 
 router.get('/logout', (req, res) => {
