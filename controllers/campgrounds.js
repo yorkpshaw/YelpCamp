@@ -14,8 +14,11 @@ module.exports.createCampground = async (req, res, next) => {
     // if(!req.body.campground) throw new ExpressError('Invalid Campground Data', 400);
     // Validate Data before it reaches Mongoose
     const campground = new Campground(req.body.campground);
+    /* Map over the array added to req.files */
+    campground.images = req.files.map(f => ({ url: f.path, filename: f.filename }))
     campground.author = req.user._id;
     await campground.save();
+    console.log(campground)
     req.flash('success', 'Successfully made a new campground!');
     res.redirect(`/campgrounds/${campground._id}`);
 }
