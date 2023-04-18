@@ -1,3 +1,10 @@
+/* If we are in development, require the dotenv package */
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
+
+console.log(process.env.SECRET)
+
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -9,7 +16,6 @@ const methodOverride = require('method-override');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
-const Joi = require('joi');
 
 const userRoutes = require('./routes/users');
 const campgroundRoutes = require('./routes/campgrounds');
