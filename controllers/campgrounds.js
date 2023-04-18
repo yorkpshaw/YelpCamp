@@ -48,6 +48,7 @@ module.exports.renderEditForm = async (req, res) => {
     res.render('campgrounds/edit', { campground });
 }
 
+/* Delete images from backend */
 module.exports.updateCampground = async (req, res) => {
     const { id } = req.params;
     console.log(req.body);
