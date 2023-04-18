@@ -31,9 +31,18 @@ const seedDB = async () => {
                 author: '643ddbba12de9a9e5d9dc1bf',
                 location: `${cities[random1000].city}, ${cities[random1000].state}`,
                 title: `${sample(descriptors)} ${sample(places)}`,
-                image: 'https://source.unsplash.com/collection/483251',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid dolorum deserunt totam delectus quos tenetur sapiente quaerat autem blanditiis, iusto ea! Eligendi expedita facere veniam dignissimos deleniti beatae dolores ullam!',
-                price
+                price,
+                images: [
+                    {
+                      url: 'https://res.cloudinary.com/daojkejva/image/upload/v1681840667/YelpCamp/a1fa7qmkkq1s1zguyovn.jpg',
+                      filename: 'YelpCamp/a1fa7qmkkq1s1zguyovn',
+                    },
+                    {
+                      url: 'https://res.cloudinary.com/daojkejva/image/upload/v1681840667/YelpCamp/jvjjpeowc8rxiosfgpu7.jpg',
+                      filename: 'YelpCamp/jvjjpeowc8rxiosfgpu7',
+                    }
+                  ]
             });
             console.log(camp); // log the camp object being saved
             await camp.save();
