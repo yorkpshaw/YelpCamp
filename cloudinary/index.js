@@ -14,17 +14,13 @@ cloudinary.config({
 
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
-  folder: 'YelpCamp',
-  allowedFormats: ['jpeg', 'png', 'jpg']
+  params: {
+    folder: 'YelpCamp',
+    allowedFormats: ['jpeg', 'png', 'jpg']
+  },
 });
 
 module.exports = {
     cloudinary,
     storage
 }
-
-const parser = multer({ storage: storage });
-
-app.post('/upload', parser.single('image'), function (req, res) {
-  res.json(req.file);
-});
