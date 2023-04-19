@@ -21,19 +21,15 @@ const mongoSanitize = require('express-mongo-sanitize');
 const userRoutes = require('./routes/users');
 const campgroundRoutes = require('./routes/campgrounds');
 const reviewRoutes = require('./routes/reviews');
-// const MongoDBStore = require("connect-mongo")
 
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
-    // useCreateIndex: true, <--- Causes app to crash now
     useUnifiedTopology: true,
-    // useFindAndModify: false <--- Also crashes
 });
 
 const db = mongoose.connection;
-// Assigned to db so you don't have to keep typing mongoose.connection
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
     console.log("Database Connected");
@@ -45,25 +41,12 @@ app.engine('ejs', ejsMate)
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'))
 
-/* parser */
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(mongoSanitize({
     replaceWith: '_'
 }));
-
-/*
-const store = new MongoDBStore({
-    url: dbUrl,
-    secret,
-    touchAfter: 24 * 60 * 60
-});
-
-store.on("error", function (e) {
-    console.log("SESSION STORE ERROR", e)
-});
-*/
 
 const sessionConfig = {
     name: 'session',
@@ -128,17 +111,11 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-/* Asking passport to use LocalStrategy */
 passport.use(new LocalStrategy(User.authenticate()));
 
-/* Use a session and store information */
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-/*
-Use this to set up a flash on every request, before route handlers
-key = success
- */
 app.use((req, res, next) => {
     res.locals.currentUser = req.user;
     res.locals.success = req.flash('success');
@@ -146,7 +123,6 @@ app.use((req, res, next) => {
     next();
 })
 
-/* import the routes from the other folder, second argument is variable declared up top */
 app.use('/', userRoutes);
 app.use('/campgrounds', campgroundRoutes)
 app.use('/campgrounds/:id/reviews', reviewRoutes)
@@ -155,7 +131,6 @@ app.get('/', (req, res) => {
     res.render('home')
 });
 
-/* This must go at bottom in order to let everything else run first */
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found', 404));
 });

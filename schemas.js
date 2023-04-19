@@ -1,6 +1,4 @@
 const BaseJoi = require('joi');
-/* This is breaking the code */
-// const sanitizeHtml = require('sanitize-html');
 
 const extension = (joi) => ({
     type: 'string',

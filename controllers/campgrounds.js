@@ -5,9 +5,7 @@ const mapBoxToken = process.env.MAPBOX_TOKEN;
 const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
 
 
-
 module.exports.index = async (req, res) => {
-    // Get the campground data, what you do with it is in the ejs file
     const campgrounds = await Campground.find({});
     res.render('campgrounds/index', { campgrounds });
 }
@@ -22,7 +20,6 @@ module.exports.createCampground = async (req, res, next) => {
         limit: 1
     }).send()
     const campground = new Campground(req.body.campground);
-    /* Map over the array added to req.files */
     campground.geometry = geoData.body.features[0].geometry;
     campground.images = req.files.map(f => ({ url: f.path, filename: f.filename }))
     campground.author = req.user._id;
@@ -32,7 +29,6 @@ module.exports.createCampground = async (req, res, next) => {
 }
 
 module.exports.showCampground = async (req, res,) => {
-    // Node.js object that allows you to access the value of a URL parameter
     const campground = await Campground.findById(req.params.id).populate({
         path: 'reviews',
         populate: {
@@ -56,21 +52,17 @@ module.exports.renderEditForm = async (req, res) => {
     res.render('campgrounds/edit', { campground });
 }
 
-/* Delete images from backend */
 module.exports.updateCampground = async (req, res) => {
     const { id } = req.params;
     console.log(req.body);
     const campground = await Campground.findByIdAndUpdate(id, { ...req.body.campground });
-    /* Create an images variable that gets mapped over, then push it in with spread operator */
     const imgs = req.files.map(f => ({ url: f.path, filename: f.filename }));
     campground.images.push(...imgs);
     await campground.save();
     if (req.body.deleteImages) {
         for (let filename of req.body.deleteImages) {
-            /* Delete the file from cloudinary */
             await cloudinary.uploader.destroy(filename);
         }
-            /* Delete the file from database */
         await campground.updateOne({ $pull: { images: { filename: { $in: req.body.deleteImages } } } })
     }
     req.flash('success', 'Successfully updated campground!');

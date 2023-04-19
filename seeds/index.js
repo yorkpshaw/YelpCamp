@@ -1,4 +1,3 @@
-/* Connect to Mongoose Using Your Models */
 const mongoose = require('mongoose');
 const cities = require('./cities');
 const { places, descriptors } = require('./seedHelpers');

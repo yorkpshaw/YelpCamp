@@ -3,8 +3,6 @@ const Review = require('./review')
 const Schema = mongoose.Schema;
 
 
-// https://res.cloudinary.com/douqbebwk/image/upload/w_300/v1600113904/YelpCamp/gxgle1ovzd2f3dgcpass.png
-
 const ImageSchema = new Schema({
     url: String,
     filename: String
@@ -45,15 +43,12 @@ const CampgroundSchema = new Schema({
     ]
 }, opts);
 
-
 CampgroundSchema.virtual('properties.popUpMarkup').get(function () {
     return `
     <strong><a href="/campgrounds/${this._id}">${this.title}</a><strong>
     <p>${this.description.substring(0, 20)}...</p>`
 });
 
-
-/* The post middleware will delete reviews associated with a deleted campground */
 CampgroundSchema.post('findOneAndDelete', async function (doc) {
     if (doc) {
         await Review.deleteMany({
