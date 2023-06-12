@@ -20,10 +20,12 @@ YelpCamp is a Yelp-style application for campgrounds. It allows users to post pi
 - Cloudinary
 - MapBox API
 - Embedded JavaScript (EJS)
+- BCrypt
+- Passport.js
 
 ## Project Initialization
 
-1. Clone the repository: `git clone https://github.com/your-username/YelpCamp.git`
+1. Clone the repository: `git clone https://github.com/yorkpshaw/YelpCamp.git`
 2. CD into the project directory
 3. Install the dependencies with `npm install`
 4. Start the application with `npm start`
