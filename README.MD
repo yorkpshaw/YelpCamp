@@ -1,15 +1,41 @@
 # YelpCamp
 
-YelpCamp - A place for the camping community to share reviews of campsites.
+YelpCamp is a Yelp-style application for campgrounds. It allows users to post pictures, write reviews, and share the location of campgrounds.
 
-Features Express.js, MongoDB, Cloudinary, and MapBox.
+## Features
+
+- User registration and authentication
+- Campground creation, editing, and deletion
+- Image uploading for campgrounds using Cloudinary
+- Campground location display using MapBox API
+- Campground searching and filtering
+- User reviews and ratings for campgrounds
+- User profiles with a list of their posted campgrounds and reviews
+
+## Technologies Used
+
+- Node.js
+- Express.js
+- MongoDB
+- Cloudinary
+- MapBox API
+- Embedded JavaScript (EJS)
 
 ## Project Initialization
 
-To fully enjoy this application on your local machine, please make sure to follow these steps:
+1. Clone the repository: `git clone https://github.com/your-username/YelpCamp.git`
+2. CD into the project directory
+3. Install the dependencies with `npm install`
+4. Start the application with `npm start`
+5. Open web browser and visit `http://localhost:3000`
 
-1. Clone the repository down to your local machine
-2. CD into the new project directory
-3. run the command 'nodemon app.js'
-4. Visit localhost:3000
-5. Enjoy!
+## Usage
+
+- Register a new account
+- Browse the list of campgrounds and click on a campground to view more details
+- Create your own campground by clicking on "New Campground" and fill out the form
+- Edit or delete campgrounds you have created
+- Add reviews, ratings, and pictures for campgrounds
+
+## Acknowledgements
+- The YelpCamp project was inspired by Colt Steele's "The Web Developer Bootcamp" course on Udemy.
