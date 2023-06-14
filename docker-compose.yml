@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  ghi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - CLOUDINARY_CLOUD_NAME=${CLOUDINARY_CLOUD_NAME}
+      - CLOUDINARY_KEY=${CLOUDINARY_KEY}
+      - CLOUDINARY_SECRET=${CLOUDINARY_SECRET}
+      - MAPBOX_TOKEN=${MAPBOX_TOKEN}
+      - DB_URL=${DB_URL}
