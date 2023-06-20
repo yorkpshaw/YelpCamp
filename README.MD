@@ -27,11 +27,18 @@ Deployed Application: https://yelpcamp-sodx.onrender.com
 
 ## Project Initialization
 
-1. Clone the repository: `git clone https://github.com/yorkpshaw/YelpCamp.git`
+1. Clone the repository: `git clone https://github.com/yorkpshaw/YelpCamp`
 2. CD into the project directory
 3. Install the dependencies with `npm install`
 4. Start the application with `npm start`
 5. Open web browser and visit `http://localhost:3000`
+
+Docker Instructions:
+1. Clone the repository: `git clone https://github.com/yorkpshaw/YelpCamp`
+2. CD into the new project directory
+3. Run `docker compose build`
+4. Run `docker compose up`
+5. Visit `http://localhost:3000/`
 
 ## Usage
 
